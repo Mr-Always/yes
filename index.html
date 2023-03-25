@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Zenoplay Now Playing</title>
+<style>body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+h1 {
+  font-size: 32px;
+  margin-top: 50px;
+}
+</style>
+  </head>
+  <body>
+    <h1 id="title">Loading...</h1>
+    <script>const url = "https://zenoplay.zenomedia.com/api/zenofm/nowplaying/6bzdqobgcpuvv";
+
+fetch(url)
+  .then(response => response.json())
+  .then(data => {
+    const title = data.title;
+    document.getElementById("title").textContent = title;
+  })
+  .catch(error => {
+    console.error(error);
+    document.getElementById("title").textContent = "Error loading title";
+  });
+</script>
+  </body>
+</html>
